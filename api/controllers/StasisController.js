@@ -15,32 +15,46 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+/* global Stasis */
+
 module.exports = {
 
   bySection: function(req, res) {
+    console.log(req.param('section'));
     Stasis.find({
       section: req.param('section')
     }).done(function(err, ssvs) {
-      res.send(ssvs);
+      res.json(ssvs);
     });
   },
   bySectionAndName: function(req, res) {
-    var secname_arr = req.param('secname').split(':');
-    var section = secname_arr[0];
-    var name = secname_arr[1];
-    console.log(section + ' --- ' + name);
+    var section = req.param('section');
+    var name = req.param('name');
     Stasis.find({
       section: section,
       name: name
     }).done(function(err, ssvs) {
-      res.send(ssvs);
+      res.json(ssvs);
     });
+  },
+  setChoices: function(req,res) {
+    console.log('section -> ' + req.param('section'));
+    console.log('name -> ' + req.param('name'));
+    console.log('choices -> ' + JSON.stringify(req.param('choices')));
+    res.json({status: 'ook!'});
+    // must reset all of the radiotracking data with new choice ids.
   },
 
   /**
    * Overrides for the settings in `config/controllers.js`
    * (specific to StasisController)
    */
-  _config: {}
+  _config: {
+    blueprints:{
+      actions: false,
+      rest: false,
+      shortcuts: false,
+    }
+  }
 
 };

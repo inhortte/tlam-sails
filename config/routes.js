@@ -94,13 +94,17 @@ module.exports.routes = {
 
   */
 
+  'get /stasis/bySection/:section/name/:name': {
+    controller: 'stasis',
+    action: 'bySectionAndName'
+  },
   'get /stasis/bySection/:section': {
     controller: 'stasis',
     action: 'bySection'
   },
-  'get /statis/bySectionAndName/:secname': {
+  'post /stasis/setChoices/:section/name/:name': {
     controller: 'stasis',
-    action: 'bySectionAndName'
+    action:'setChoices'
   }
 };
 
