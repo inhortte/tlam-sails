@@ -19,7 +19,11 @@ var passport = require('passport');
 
 module.exports = {
   login: function(req, res) {
-    res.view('auth/login', { message: req.message });
+    if(req.isAuthenticated()) {
+      res.view('home/index');
+    } else {
+      res.view('auth/login', { message: req.message });
+    }
   },
   process: function(req, res) {
     passport.authenticate('local', function(err, user, info) {
@@ -39,5 +43,11 @@ module.exports = {
     req.logout();
     res.send('penguin?');
   },
-  _config: {}
+  _config: {
+    blueprints: {
+      actions: false,
+      rest: false,
+      shortcuts: false
+    }
+  }
 };
