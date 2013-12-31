@@ -35,6 +35,9 @@ module.exports.routes = {
   '/': {
     view: 'home/index'
   },
+  'get /login': 'AuthController.login',
+  'post /login': 'AuthController.process',
+  'get /logout': 'AuthController.logout',
 
   /*
   // But what if you want your home page to display
@@ -93,6 +96,7 @@ module.exports.routes = {
   'get /*(^.*)': 'UserController.profile'
 
   */
+
 
   'get /stasis/bySection/:section/name/:name': {
     controller: 'stasis',
