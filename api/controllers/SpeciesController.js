@@ -1,5 +1,5 @@
 /**
- * RtAnimalController
+ * SpeciesController
  *
  * @module      :: Controller
  * @description	:: A set of functions called `actions`.
@@ -15,22 +15,17 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-/* global RtAnimal */
-
 module.exports = {
-
-  find: function(req, res) {
-    console.log('RtAnimal.find -> ' + req.param('id'));
-    RtAnimal.findOne(parseInt(req.param('id'), 10)).done(function(err, animal) {
-                                                        res.json(animal);
-                                                      });
-  },
-
   /**
    * Overrides for the settings in `config/controllers.js`
-   * (specific to RtAnimalController)
+   * (specific to SpeciesController)
    */
-  _config: {}
-
+  _config: {
+    blueprints:{
+      actions: false,
+      rest: false,
+      shortcuts: false
+    }
+  }
 
 };

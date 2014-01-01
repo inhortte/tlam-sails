@@ -6,10 +6,23 @@
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 
+/* global Species */
+/* global Project */
+/* global Animal */
+
+var ModelUtils = require('../../lib/ModelUtils');
+
 module.exports = {
   autoPK: true,
-  tableName: 'rt_animal',
+  tableName: 'animal',
   attributes: {
+    species_id: {
+      type: 'integer',
+      required: true
+    },
+    project_id: {
+      type: 'integer'
+    },
     animal_id: {
       type: 'integer',
       defaultsTo: 0
@@ -57,7 +70,30 @@ module.exports = {
     },
     cause_of_death: {
       type: 'string'
+    },
+    species: function(cb) {
+      Species.findOne(this.species_id).done(function(err, sp) {
+        if(err) {
+          cb(null);
+        } else {
+          cb(sp);
+        }
+      });
+    },
+    project: function() {
+      Project.findOne(this.species_id).done(function(err, p) {
+        if(err) {
+          return null;
+        } else {
+          return p;
+        }
+      });
     }
+  },
+  beforeCreate: function(vals, next) {
+    ModelUtils.nextId(Animal, function(id) {
+      vals.id = id;
+      next();
+    });
   }
-
 };

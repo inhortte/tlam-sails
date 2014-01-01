@@ -26,7 +26,7 @@ module.exports = {
     }
   },
   process: function(req, res) {
-    passport.authenticate('local', function(err, user, info) {
+    passport.authenticate('local', function(err, user /*, info */) {
       if(err || (!user)) {
         res.redirect('/login');
         return;
