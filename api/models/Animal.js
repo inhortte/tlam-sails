@@ -6,8 +6,6 @@
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 
-/* global Species */
-/* global Project */
 /* global Animal */
 
 var ModelUtils = require('../../lib/ModelUtils');
@@ -70,24 +68,6 @@ module.exports = {
     },
     cause_of_death: {
       type: 'string'
-    },
-    species: function(cb) {
-      Species.findOne(this.species_id).done(function(err, sp) {
-        if(err) {
-          cb(null);
-        } else {
-          cb(sp);
-        }
-      });
-    },
-    project: function() {
-      Project.findOne(this.species_id).done(function(err, p) {
-        if(err) {
-          return null;
-        } else {
-          return p;
-        }
-      });
     }
   },
   beforeCreate: function(vals, next) {

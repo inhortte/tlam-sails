@@ -103,7 +103,17 @@ module.exports.routes = {
 
   */
 
+  // AnimalController
+  'get /animal/:id/species': {
+    controller: 'animal',
+    action: 'species'
+  },
+  'get /animal/:id/project': {
+    controller: 'animal',
+    action: 'project'
+  },
 
+  // StasisController
   'get /stasis/bySection/:section/name/:name': {
     controller: 'stasis',
     action: 'bySectionAndName'

@@ -11,6 +11,8 @@
 var ModelUtils = require('../../lib/ModelUtils');
 
 module.exports = {
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
   attributes: {
     name: {
       type: 'string',

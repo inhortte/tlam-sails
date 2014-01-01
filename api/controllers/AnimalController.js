@@ -16,14 +16,44 @@
  */
 
 /* global Animal */
+/* global Species */
+
+var async = require('async');
+
+function getSpecies(animal, cb) {
+  Species.findOne(animal.species_id).done(function(err, sp) {
+    if(err) {
+      animal.species = null;
+    } else {
+      animal.species = sp;
+    }
+    cb(animal);
+  });
+}
 
 module.exports = {
 
   find: function(req, res) {
     console.log('Animal.find -> ' + req.param('id'));
-    Animal.findOne(parseInt(req.param('id'), 10)).done(function(err, animal) {
-      res.json(animal);
-    });
+    if(req.param('id')) {
+      Animal.findOne(parseInt(req.param('id'), 10)).done(function(err, animal) {
+        if(err) { res.json(null); }
+        getSpecies(animal, function(animal) {
+          res.json(animal);
+        });
+      });
+    } else {
+      Animal.find({}).done(function(err, animals) {
+        if(err) { res.json([]); }
+        async.map(animals, function(animal, cb) {
+          getSpecies(animal, function(animal) {
+            cb(null, animal);
+          });
+        }, function(err, animals) {
+             res.json(animals);
+           });
+      });
+    }
   },
 
   /**
