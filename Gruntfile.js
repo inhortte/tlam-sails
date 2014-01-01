@@ -409,7 +409,10 @@ module.exports = function (grunt) {
         src: ['bin/conv_rt_mysql_mongo.js']
       },
       api: {
-        src: ['api/**/*']
+        src: ['api/**/*.js']
+      },
+      config: {
+        src: ['config/**/*.js']
       }
     },
 
@@ -423,10 +426,13 @@ module.exports = function (grunt) {
         tasks: ['jshint:bin']
       },
       api: {
-
         // API files to watch:
         files: '<%= jshint.api.src %>',
         tasks: ['jshint:api']
+      },
+      config: {
+        files: '<%= jshint.config.src %>',
+        tasks: ['jshint:config']
       },
       assets: {
 

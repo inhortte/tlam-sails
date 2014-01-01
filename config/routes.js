@@ -32,9 +32,18 @@ module.exports.routes = {
   // located at `views/home/index.ejs`
   //
   // (This would also work if you had a file at: `/views/home.ejs`)
+  /*
   '/': {
     view: 'home/index'
   },
+   */
+  'get /': {
+    controller: 'auth',
+    action: 'login'
+  },
+  'get /login': 'AuthController.login',
+  'post /login': 'AuthController.process',
+  'get /logout': 'AuthController.logout',
 
   /*
   // But what if you want your home page to display
@@ -93,6 +102,7 @@ module.exports.routes = {
   'get /*(^.*)': 'UserController.profile'
 
   */
+
 
   'get /stasis/bySection/:section/name/:name': {
     controller: 'stasis',
