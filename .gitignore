@@ -54,3 +54,10 @@ dump
 #######################
 bin
 biotope.json
+
+######################
+# ember
+######################
+assets/js/application.js
+assets/js/index.js
+assets/js/templates.js

@@ -16,7 +16,7 @@
 
 module.exports = function (grunt) {
 
-
+  'use strict';
 
   /**
    * CSS files to inject in order
@@ -29,7 +29,7 @@ module.exports = function (grunt) {
    */
 
   var cssFilesToInject = [
-    'linker/**/*.css'
+    'linker/styles/*.css'
   ];
 
 
@@ -59,7 +59,7 @@ module.exports = function (grunt) {
     // *->    put other dependencies here   <-*
 
     // All of the rest of your app scripts imported here
-    'linker/**/*.js'
+    'linker/js/application.js'
   ];
 
 
@@ -141,88 +141,41 @@ module.exports = function (grunt) {
     copy: {
       dev: {
         files: [
+//          {
+//            expand: true,
+//            cwd: './assets/linker/js/vendor',
+//            src: ['*.js'],
+//            dest: '.tmp/public/js/vendor'
+//          },
           {
-          expand: true,
-          cwd: './assets',
-          src: ['**/*.!(coffee)'],
-          dest: '.tmp/public'
-        }
+            expand: true,
+            cwd: './assets/linker/js',
+            src: ['*.js'],
+            dest: '.tmp/public/js'
+          },
+          {
+            expand: true,
+            cwd: './assets/linker/styles',
+            src: ['*.css'],
+            dest: '.tmp/public/styles'
+          }
         ]
       },
       build: {
-        files: [
-          {
-          expand: true,
-          cwd: '.tmp/public',
-          src: ['**/*'],
-          dest: 'www'
-        }
-        ]
+//        files: [
+//          {
+//          expand: true,
+//          cwd: '.tmp/public',
+//          src: ['**/*'],
+//          dest: 'www'
+//        }
+//        ]
       }
     },
 
     clean: {
       dev: ['.tmp/public/**'],
       build: ['www']
-    },
-
-    jst: {
-      dev: {
-
-        // To use other sorts of templates, specify the regexp below:
-        // options: {
-        //   templateSettings: {
-        //     interpolate: /\{\{(.+?)\}\}/g
-        //   }
-        // },
-
-        files: {
-          '.tmp/public/jst.js': templateFilesToInject
-        }
-      }
-    },
-
-    less: {
-      dev: {
-        files: [
-          {
-          expand: true,
-          cwd: 'assets/styles/',
-          src: ['*.less'],
-          dest: '.tmp/public/styles/',
-          ext: '.css'
-        }, {
-          expand: true,
-          cwd: 'assets/linker/styles/',
-          src: ['*.less'],
-          dest: '.tmp/public/linker/styles/',
-          ext: '.css'
-        }
-        ]
-      }
-    },
-
-    coffee: {
-      dev: {
-        options:{
-          bare:true
-        },
-        files: [
-          {
-            expand: true,
-            cwd: 'assets/js/',
-            src: ['**/*.coffee'],
-            dest: '.tmp/public/js/',
-            ext: '.js'
-          }, {
-            expand: true,
-            cwd: 'assets/linker/js/',
-            src: ['**/*.coffee'],
-            dest: '.tmp/public/linker/js/',
-            ext: '.js'
-          }
-        ]
-      }
     },
 
     concat: {
@@ -323,76 +276,7 @@ module.exports = function (grunt) {
           'views/**/*.html': ['.tmp/public/jst.js'],
           'views/**/*.ejs': ['.tmp/public/jst.js']
         }
-      },
-
-
-      /*******************************************
-       * Jade linkers (TODO: clean this up)
-       *******************************************/
-
-      devJsJADE: {
-        options: {
-          startTag: '// SCRIPTS',
-          endTag: '// SCRIPTS END',
-          fileTmpl: 'script(type="text/javascript", src="%s")',
-          appRoot: '.tmp/public'
-        },
-        files: {
-          'views/**/*.jade': jsFilesToInject
-        }
-      },
-
-      prodJsJADE: {
-        options: {
-          startTag: '// SCRIPTS',
-          endTag: '// SCRIPTS END',
-          fileTmpl: 'script(type="text/javascript", src="%s")',
-          appRoot: '.tmp/public'
-        },
-        files: {
-          'views/**/*.jade': ['.tmp/public/min/production.js']
-        }
-      },
-
-      devStylesJADE: {
-        options: {
-          startTag: '// STYLES',
-          endTag: '// STYLES END',
-          fileTmpl: 'link(rel="stylesheet", href="%s")',
-          appRoot: '.tmp/public'
-        },
-        files: {
-          'views/**/*.jade': cssFilesToInject
-        }
-      },
-
-      prodStylesJADE: {
-        options: {
-          startTag: '// STYLES',
-          endTag: '// STYLES END',
-          fileTmpl: 'link(rel="stylesheet", href="%s")',
-          appRoot: '.tmp/public'
-        },
-        files: {
-          'views/**/*.jade': ['.tmp/public/min/production.css']
-        }
-      },
-
-      // Bring in JST template object
-      devTplJADE: {
-        options: {
-          startTag: '// TEMPLATES',
-          endTag: '// TEMPLATES END',
-          fileTmpl: 'script(type="text/javascript", src="%s")',
-          appRoot: '.tmp/public'
-        },
-        files: {
-          'views/**/*.jade': ['.tmp/public/jst.js']
-        }
       }
-      /************************************
-       * Jade linker end
-       ************************************/
     },
 
     jshint: {
@@ -457,10 +341,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('compileAssets', [
     'clean:dev',
-    'jst:dev',
-    'less:dev',
-    'copy:dev',
-    'coffee:dev'
+    'copy:dev'
   ]);
 
   grunt.registerTask('linkAssets', [
@@ -468,10 +349,7 @@ module.exports = function (grunt) {
     // Update link/script/template references in `assets` index.html
     'sails-linker:devJs',
     'sails-linker:devStyles',
-    'sails-linker:devTpl',
-    'sails-linker:devJsJADE',
-    'sails-linker:devStylesJADE',
-    'sails-linker:devTplJADE'
+    'sails-linker:devTpl'
   ]);
 
 
@@ -487,19 +365,13 @@ module.exports = function (grunt) {
   // When sails is lifted in production
   grunt.registerTask('prod', [
     'clean:dev',
-    'jst:dev',
-    'less:dev',
     'copy:dev',
-    'coffee:dev',
     'concat',
     'uglify',
     'cssmin',
     'sails-linker:prodJs',
     'sails-linker:prodStyles',
-    'sails-linker:devTpl',
-    'sails-linker:prodJsJADE',
-    'sails-linker:prodStylesJADE',
-    'sails-linker:devTplJADE'
+    'sails-linker:devTpl'
   ]);
 
   // When API files are changed:
