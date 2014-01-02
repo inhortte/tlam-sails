@@ -149,6 +149,11 @@ module.exports = function (grunt) {
 //          },
           {
             expand: true,
+            cwd: './assets/js',
+            src: ['*.js'],
+            dest: '.tmp/public/js'
+          },          {
+            expand: true,
             cwd: './assets/linker/js',
             src: ['*.js'],
             dest: '.tmp/public/js'
