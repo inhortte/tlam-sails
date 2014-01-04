@@ -37,9 +37,14 @@ module.exports.routes = {
     view: 'home/index'
   },
    */
+  /*
   'get /': {
     controller: 'auth',
     action: 'login'
+  },
+   */
+  '/': {
+    view: 'home/index'
   },
   'get /login': 'AuthController.login',
   'post /login': 'AuthController.process',
@@ -102,6 +107,16 @@ module.exports.routes = {
   'get /*(^.*)': 'UserController.profile'
 
   */
+
+  // AnimalController
+  'get /animals': {
+    controller: 'animal',
+    action: 'find'
+  },
+  'get /animal/id?': {
+    controller: 'animal',
+    action: 'find'
+  },
 
   // StasisController
   'get /stasis/bySection/:section/name/:name': {

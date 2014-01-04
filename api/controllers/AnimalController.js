@@ -39,18 +39,19 @@ module.exports = {
       Animal.findOne(parseInt(req.param('id'), 10)).done(function(err, animal) {
         if(err) { res.json(null); }
         getSpecies(animal, function(animal) {
-          res.json(animal);
+          res.json({animal: animal});
         });
       });
     } else {
-      Animal.find({}).done(function(err, animals) {
+      // organise by birth date.
+      Animal.find({sort: 'birthdate asc'}).done(function(err, animals) {
         if(err) { res.json([]); }
         async.map(animals, function(animal, cb) {
           getSpecies(animal, function(animal) {
             cb(null, animal);
           });
         }, function(err, animals) {
-             res.json(animals);
+             res.json({animals: animals});
            });
       });
     }
