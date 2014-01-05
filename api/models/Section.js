@@ -6,9 +6,13 @@
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 
-module.exports = {
-  autoPK: false,
+/* global Section */
 
+var ModelUtils = require('../../lib/ModelUtils');
+
+module.exports = {
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
   attributes: {
     abbr: {
       type: 'STRING',
@@ -20,5 +24,11 @@ module.exports = {
       required: true
     },
     baseUrl: 'STRING'
+  },
+  beforeCreate: function(vals, next) {
+    ModelUtils.nextId(Section, function(id) {
+      vals.id = id;
+      next();
+    });
   }
 };

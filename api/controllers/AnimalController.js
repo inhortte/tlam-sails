@@ -34,7 +34,6 @@ function getSpecies(animal, cb) {
 module.exports = {
 
   find: function(req, res) {
-    console.log('Animal.find -> ' + req.param('id'));
     if(req.param('id')) {
       Animal.findOne(parseInt(req.param('id'), 10)).done(function(err, animal) {
         if(err) { res.json(null); }
@@ -61,7 +60,11 @@ module.exports = {
    * Overrides for the settings in `config/controllers.js`
    * (specific to RtAnimalController)
    */
-  _config: {}
-
-
+  _config: {
+    blueprints: {
+      actions: false,
+      rest: false,
+      shortcuts: false
+    }
+  }
 };

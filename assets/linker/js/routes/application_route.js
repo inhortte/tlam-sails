@@ -5,9 +5,8 @@ var ApplicationRoute = Ember.Route.extend({
   },
   renderTemplate: function() {
     this._super();
-//    console.log('ApplicationRoute.renderTemplate');
-//    var animalsController = this.controllerFor('animals');
-//    this.render('animals', {outlet: 'animals', controller: animalsController, into: 'application'});
+    var topmartenController = this.controllerFor('topmarten');
+    this.render('topmarten', {outlet: 'topmarten', controller: topmartenController, into: 'application'});
   }
 });
 

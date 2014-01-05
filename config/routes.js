@@ -113,10 +113,6 @@ module.exports.routes = {
     controller: 'animal',
     action: 'find'
   },
-  'get /animal/id?': {
-    controller: 'animal',
-    action: 'find'
-  },
 
   // StasisController
   'get /stasis/bySection/:section/name/:name': {
