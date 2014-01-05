@@ -11,25 +11,13 @@
       <th>Sex</th>
       <th>B Date</th>
       <th>R Date</th>
-      <th>N</th>
-      <th>E</th>
+      <th>North</th>
+      <th>East</th>
     </tr>
   </thead>
   <tbody>
   {{#each}}
-    <tr>
-      <td><span class="glyphicon glyphicon-chevron-down"></span></td>
-      <td><span class="glyphicon glyphicon-tree-conifer"></span></td>
-      <td><span class="glyphicon glyphicon-file"></span></td>
-      <td>{{#link-to 'animals.edit' id}}{{nickname}}{{/link-to}}</td>
-      <td>{{species.name}}</td>
-      <td>{{animal_id}}</td>
-      <td>{{sex}}</td>
-      <td>{{birthdate}}</td>
-      <td>{{release_date}}</td>
-      <td>{{release_location_N}}</td>
-      <td>{{release_location_E}}</td>
-    </tr>
+    {{animal-individual animal_id=animal_id frequency=frequency nickname=nickname sex=sex birthdate=birthdate release_date=release_date microchip=microchip enclosure_type=enclosure_type release_site=release_site remarks=remarks release_location_N=release_location_N release_location_E=release_location_E deathdate=deathdate cause_of_death=cause_of_death species=species}}
   {{/each}}
   </tbody>
 </table>
