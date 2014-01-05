@@ -233,122 +233,139 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, hashContexts, hashTypes, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("<form role=\"form\">\n  ");
+  hashContexts = {'type': depth0,'valueBinding': depth0};
+  hashTypes = {'type': "STRING",'valueBinding': "STRING"};
   options = {hash:{
+    'type': ("hidden"),
     'valueBinding': ("id")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n<p class=\"clear\">\n  <label for=\"animal_id\">Animal ID</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6\">\n        <div class=\"form-group\">\n          <label for=\"animal_id\">Animal ID</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("animal_id")
+    'valueBinding': ("animal_id"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"nickname\">Nickname</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n        <div class=\"form-group\">\n          <label for=\"nickname\">Nickname</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("nickname")
+    'valueBinding': ("nickname"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"birthdate\">Birthdate</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n        <div class=\"form-group\">\n          <label for=\"birthdate\">Birthdate</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("birthdate")
+    'valueBinding': ("birthdate"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"deathdate\">Deathdate</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n        <div class=\"form-group\">\n          <label for=\"deathdate\">Deathdate</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("deathdate")
+    'valueBinding': ("deathdate"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"microchip\">Microchip</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n        <div class=\"form-group\">\n          <label for=\"microchip\">Microchip</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("microchip")
+    'valueBinding': ("microchip"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"release_site\">Release Site</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n        <div class=\"form-group\">\n          <label for=\"release_location_N\">Release Loc N</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("release_site")
+    'valueBinding': ("release_location_N"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"frequency\">Frequency</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n      </div>\n      <div class=\"col-md-6\">\n        <div class=\"form-group\">\n          <label for=\"release_site\">Release Site</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("frequency")
+    'valueBinding': ("release_site"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"sex\">Sex</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n        <div class=\"form-group\">\n          <label for=\"frequency\">Frequency</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("sex")
+    'valueBinding': ("frequency"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"release_date\">Release Date</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n        <div class=\"form-group\">\n          <label for=\"sex\">Sex</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("release_date")
+    'valueBinding': ("sex"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"enclosure_type\">Enclosure Type</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n        <div class=\"form-group\">\n          <label for=\"release_date\">Release Date</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("enclosure_type")
+    'valueBinding': ("release_date"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"release_location_N\">Release Loc N</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n        <div class=\"form-group\">\n          <label for=\"enclosure_type\">Enclosure Type</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("release_location_N")
+    'valueBinding': ("enclosure_type"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"release_location_E\">Release Loc E</label>\n  ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
+  data.buffer.push("\n        </div>\n        <div class=\"form-group\">\n          <label for=\"release_location_E\">Release Loc E</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'class': "STRING"};
   options = {hash:{
-    'valueBinding': ("release_location_E")
+    'valueBinding': ("release_location_E"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"remarks\">Remarks</label>\n  ");
-  hashContexts = {'valueBinding': depth0,'rows': depth0,'cols': depth0};
-  hashTypes = {'valueBinding': "STRING",'rows': "STRING",'cols': "STRING"};
+  data.buffer.push("\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-md-6\">\n        <div class=\"form-group\">\n          <label for=\"remarks\">Remarks</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'rows': depth0,'cols': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'rows': "STRING",'cols': "STRING",'class': "STRING"};
   options = {hash:{
     'valueBinding': ("remarks"),
     'rows': ("5"),
-    'cols': ("40")
+    'cols': ("40"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.textarea || depth0.textarea),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "textarea", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  <label for=\"cause_of_death\">Cause of Death</label>\n  ");
-  hashContexts = {'valueBinding': depth0,'rows': depth0,'cols': depth0};
-  hashTypes = {'valueBinding': "STRING",'rows': "STRING",'cols': "STRING"};
+  data.buffer.push("\n        </div>\n      </div>\n      <div class=\"col-md-6\">\n        <div class=\"form-group\">\n          <label for=\"cause_of_death\">Cause of Death</label>\n          ");
+  hashContexts = {'valueBinding': depth0,'rows': depth0,'cols': depth0,'class': depth0};
+  hashTypes = {'valueBinding': "STRING",'rows': "STRING",'cols': "STRING",'class': "STRING"};
   options = {hash:{
     'valueBinding': ("cause_of_death"),
     'rows': ("5"),
-    'cols': ("40")
+    'cols': ("40"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.textarea || depth0.textarea),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "textarea", options))));
-  data.buffer.push("\n</p>\n<p class=\"clear\">\n  ");
-  hashContexts = {'type': depth0};
-  hashTypes = {'type': "STRING"};
+  data.buffer.push("\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-md-2 col-offset-10\">\n        <div class=\"form-group\">\n          ");
+  hashContexts = {'type': depth0,'class': depth0};
+  hashTypes = {'type': "STRING",'class': "STRING"};
   options = {hash:{
-    'type': ("submit")
+    'type': ("submit"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</p>\n");
+  data.buffer.push("\n        </div>\n      </div>\n    </div>\n  </div>\n</form>\n");
   return buffer;
   
 });
