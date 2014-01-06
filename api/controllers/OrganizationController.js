@@ -16,28 +16,16 @@
  */
 
 /* global Organization */
-/* global Project */
 
+var ModelUtils = require('../../lib/ModelUtils');
 var async = require('async');
-
-function getProjects(organization, cb) {
-  console.log("organization_id is type " + typeof organization.id);
-  Project.find().where({organization_id: parseInt(organization.id, 10)}).sort({createdAt: 'asc'}).done(function(err, projects) {
-    if(err || !projects) {
-      organization.projects = [];
-    } else {
-      organization.projects = projects;
-    }
-    cb(organization);
-  });
-}
 
 module.exports = {
     find: function(req, res) {
     if(req.param('id')) {
       Organization.findOne(parseInt(req.param('id'), 10)).done(function(err, organization) {
         if(err) { res.json(null); }
-        getProjects(organization, function(organization) {
+        ModelUtils.getProjects(organization, function(organization) {
           res.json({organization: organization});
         });
       });
@@ -45,7 +33,7 @@ module.exports = {
       Organization.find().sort('organization_id').sort({ createdAt: 'asc'}).done(function(err, organizations) {
         if(err) { res.json({organizations: []}); }
         async.map(organizations, function(organization, cb) {
-          getProjects(organization, function(organization) {
+          ModelUtils.getProjects(organization, function(organization) {
             cb(null, organization);
           });
         }, function(err, organizations) {

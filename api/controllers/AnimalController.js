@@ -17,30 +17,9 @@
 
 /* global Animal */
 /* global Species */
-/* global Project */
 
+var ModelUtils = require('../../lib/ModelUtils');
 var async = require('async');
-
-function getSpecies(animal, cb) {
-  Species.findOne(animal.species_id).done(function(err, sp) {
-    if(err) {
-      animal.species = null;
-    } else {
-      animal.species = sp;
-    }
-    cb(animal);
-  });
-}
-function getProject(animal, cb) {
-  Project.findOne(animal.project_id).done(function(err, p) {
-    if(err || !p) {
-      animal.project = null;
-    } else {
-      animal.project = p;
-    }
-    cb(animal);
-  });
-}
 
 module.exports = {
 
@@ -48,8 +27,8 @@ module.exports = {
     if(req.param('id')) {
       Animal.findOne(parseInt(req.param('id'), 10)).done(function(err, animal) {
         if(err) { res.json(null); }
-        getSpecies(animal, function(animal) {
-          getProject(animal, function(animal) {
+        ModelUtils.getSpecies(animal, function(animal) {
+          ModelUtils.getProject(animal, function(animal) {
             res.json({animal: animal});
           });
         });
@@ -59,8 +38,10 @@ module.exports = {
       Animal.find({sort: 'birthdate asc'}).done(function(err, animals) {
         if(err || !animals) { res.json({animals: []}); }
         async.map(animals, function(animal, cb) {
-          getSpecies(animal, function(animal) {
-            cb(null, animal);
+          ModelUtils.getSpecies(animal, function(animal) {
+            ModelUtils.getProject(animal, function(animal) {
+              cb(null, animal);
+            });
           });
         }, function(err, animals) {
              res.json({animals: animals});

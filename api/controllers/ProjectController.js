@@ -15,40 +15,18 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-/* global Organization */
 /* global Project */
-/* global Animal */
 
+var ModelUtils = require('../../lib/ModelUtils');
 var async = require('async');
-
-function getOrganization(project, cb) {
-  Organization.findOne(project.organization_id).done(function(err, o) {
-    if(err || !o) {
-      project.organization = null;
-    } else {
-      project.organization = o;
-    }
-    cb(project);
-  });
-}
-function getAnimals(project, cb) {
-  Animal.find().where({project_id: parseInt(project.id, 10)}).sort({birthdate: 'asc'}).done(function(err, animals) {
-    if(err || !animals) {
-      project.animals = [];
-    } else {
-      project.animals = animals;
-    }
-    cb(project);
-  });
-}
 
 module.exports = {
   find: function(req, res) {
     if(req.param('id')) {
       Project.findOne(parseInt(req.param('id'), 10)).done(function(err, project) {
         if(err) { res.json(null); }
-        getOrganization(project, function(project) {
-          getAnimals(project, function(project) {
+        ModelUtils.getOrganization(project, function(project) {
+          ModelUtils.getAnimals(project, function(project) {
             res.json({project: project});
           });
         });
@@ -57,8 +35,8 @@ module.exports = {
       Project.find().sort('organization_id').sort({ createdAt: 'asc'}).done(function(err, projects) {
         if(err) { res.json({projects: []}); }
         async.map(projects, function(project, cb) {
-          getOrganization(project, function(project) {
-            getAnimals(project, function(project) {
+          ModelUtils.getOrganization(project, function(project) {
+            ModelUtils.getAnimals(project, function(project) {
               cb(null, project);
             });
           });
