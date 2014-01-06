@@ -14,7 +14,9 @@ var Animal = DS.Model.extend({
   deathdate: DS.attr('date'),
   cause_of_death: DS.attr(),
   species_id: DS.attr('number'),
-  species: DS.attr()
+  project_id: DS.attr('number'),
+  species: DS.attr(),
+  project: DS.attr()
 });
 
 module.exports = Animal;

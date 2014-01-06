@@ -32,7 +32,7 @@ function getOrganization(project, cb) {
   });
 }
 function getAnimals(project, cb) {
-  Animal.find().where({project_id: project.id}).sort({birthdate: 'asc'}).done(function(err, animals) {
+  Animal.find().where({project_id: parseInt(project.id, 10)}).sort({birthdate: 'asc'}).done(function(err, animals) {
     if(err || !animals) {
       project.animals = [];
     } else {
@@ -58,7 +58,9 @@ module.exports = {
         if(err) { res.json({projects: []}); }
         async.map(projects, function(project, cb) {
           getOrganization(project, function(project) {
-            cb(null, project);
+            getAnimals(project, function(project) {
+              cb(null, project);
+            });
           });
         }, function(err, projects) {
              res.json({projects: projects});

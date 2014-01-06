@@ -21,7 +21,8 @@
 var async = require('async');
 
 function getProjects(organization, cb) {
-  Project.find().where({organization_id: organization.id}).sort({createdAt: 'asc'}).done(function(err, projects) {
+  console.log("organization_id is type " + typeof organization.id);
+  Project.find().where({organization_id: parseInt(organization.id, 10)}).sort({createdAt: 'asc'}).done(function(err, projects) {
     if(err || !projects) {
       organization.projects = [];
     } else {
