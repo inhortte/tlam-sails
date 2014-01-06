@@ -35,10 +35,10 @@
             </div>
             <div class="col-md-4">
               <div>
-                {{nickname}}&nbsp;
+                {{#link-to 'animals.edit' mongoid}}{{nickname}}{{/link-to}}&nbsp;
               </div>
               <div>
-                {{animal_id}}&nbsp;
+                {{animal_id}} {{id}} the id&nbsp;
               </div>
               <div>
                 {{frequency}}&nbsp;
@@ -47,10 +47,10 @@
                 {{sex}}&nbsp;
               </div>
               <div>
-                {{birthdate}}&nbsp;
+                {{formatDate birthdate}}&nbsp;
               </div>
               <div>
-                {{release_date}}&nbsp;
+                {{formatDate release_date}}&nbsp;
               </div>
               <div>
                 {{microchip}}&nbsp;
@@ -90,10 +90,10 @@
                 {{release_location_E}}&nbsp;
               </div>
               <div>
-                {{deathdate}}&nbsp;
+                {{formatDate deathdate}}&nbsp;
               </div>
               <div>
-                {{species.name}}&nbsp;
+                {{capitalizeAll species.name}}&nbsp;
               </div>
             </div>
           </div>
@@ -117,12 +117,12 @@
       </td>
       <td><span class="glyphicon glyphicon-tree-conifer"></span></td>
       <td><span class="glyphicon glyphicon-file"></span></td>
-      <td>{{#link-to 'animals.edit' id}}{{nickname}}{{/link-to}}</td>
-      <td>{{species.name}}</td>
+      <td><a href="/#/animals/{{unbound mongoid}}">{{nickname}}</a></td>
+      <td>{{capitalizeAll species.name}}</td>
       <td>{{animal_id}}</td>
       <td>{{sex}}</td>
-      <td>{{birthdate}}</td>
-      <td>{{release_date}}</td>
+      <td>{{formatDate birthdate}}</td>
+      <td>{{formatDate release_date}}</td>
       <td>{{release_location_N}}</td>
       <td>{{release_location_E}}</td>
     {{/if}}

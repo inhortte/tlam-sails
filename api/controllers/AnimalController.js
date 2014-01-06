@@ -17,6 +17,7 @@
 
 /* global Animal */
 /* global Species */
+/* global Project */
 
 var async = require('async');
 
@@ -30,6 +31,16 @@ function getSpecies(animal, cb) {
     cb(animal);
   });
 }
+function getProject(animal, cb) {
+  Project.findOne(animal.project_id).done(function(err, p) {
+    if(err || !p) {
+      animal.project = null;
+    } else {
+      animal.project = p;
+    }
+    cb(animal);
+  });
+}
 
 module.exports = {
 
@@ -38,13 +49,15 @@ module.exports = {
       Animal.findOne(parseInt(req.param('id'), 10)).done(function(err, animal) {
         if(err) { res.json(null); }
         getSpecies(animal, function(animal) {
-          res.json({animal: animal});
+          getProject(animal, function(animal) {
+            res.json({animal: animal});
+          });
         });
       });
     } else {
       // organise by birth date.
       Animal.find({sort: 'birthdate asc'}).done(function(err, animals) {
-        if(err) { res.json([]); }
+        if(err || !animals) { res.json({animals: []}); }
         async.map(animals, function(animal, cb) {
           getSpecies(animal, function(animal) {
             cb(null, animal);
