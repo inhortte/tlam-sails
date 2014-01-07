@@ -5,15 +5,35 @@
           <span class="glyphicon glyphicon-chevron-up"></span>
         </a>
       </td>
-      <td><span class="glyphicon glyphicon-tree-conifer"></span></td>
       <td><span class="glyphicon glyphicon-file"></span></td>
-      <td colspan="8">
+      <td colspan="11">
         <div class="container">
           <div class="row">
+            <div class="col-md-1">
+              <span class="glyphicon glyphicon-tree-conifer"></span>
+            </div>
+            <div class="col-md-1">
+              <span class="glyphicon glyphicon-file"></span>
+            </div>
             <div class="col-md-2">
-              <div>
-                <strong>Nickname:</strong>
-              </div>
+              <strong>{{#link-to 'animals.edit' mongoid}}{{nickname}}{{/link-to}}</strong>
+            </div>
+            <div class="col-md-3">
+              <strong>{{capitalizeAll project.organization.name}}</strong>
+            </div>
+            <div class="col-md-3">
+              <strong>{{capitalizeAll project.name}}</strong>
+            </div>
+            <div class="col-md-1">
+              {{#link-to 'animals.edit' mongoid}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}
+            </div>
+            <div class="col-md-1">
+              <a href="#"><span class="glyphicon glyphicon-trash"></span>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-md-2">
               <div>
                 <strong>Animal ID:</strong>
               </div>
@@ -35,9 +55,6 @@
             </div>
             <div class="col-md-4">
               <div>
-                {{#link-to 'animals.edit' mongoid}}{{nickname}}{{/link-to}}&nbsp;
-              </div>
-              <div>
                 {{animal_id}} {{id}} the id&nbsp;
               </div>
               <div>
@@ -58,6 +75,9 @@
             </div>
             <div class="col-md-2">
               <div>
+                <strong>Species:</strong>
+              </div>
+              <div>
                 <strong>Enclosure Type:</strong>
               </div>
               <div>
@@ -72,11 +92,11 @@
               <div>
                 <strong>Deathdate:</strong>
               </div>
-              <div>
-                <strong>Species:</strong>
-              </div>
             </div>
             <div class="col-md-4">
+              <div>
+                {{capitalizeAll species.name}}&nbsp;
+              </div>
               <div>
                 {{enclosure_type}}&nbsp;
               </div>
@@ -91,9 +111,6 @@
               </div>
               <div>
                 {{formatDate deathdate}}&nbsp;
-              </div>
-              <div>
-                {{capitalizeAll species.name}}&nbsp;
               </div>
             </div>
           </div>
@@ -121,9 +138,10 @@
       <td>{{capitalizeAll species.name}}</td>
       <td>{{animal_id}}</td>
       <td>{{sex}}</td>
+      <td>{{project.abbr}} {{project.name}}</td>
+      <td>{{capitalizeAll project.name}}</td>
       <td>{{formatDate birthdate}}</td>
-      <td>{{formatDate release_date}}</td>
-      <td>{{release_location_N}}</td>
-      <td>{{release_location_E}}</td>
+      <td>{{#link-to 'animals.edit' mongoid}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}</td>
+      <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
     {{/if}}
     </tr>

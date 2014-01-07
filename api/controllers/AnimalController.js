@@ -44,6 +44,7 @@ module.exports = {
             });
           });
         }, function(err, animals) {
+             console.log("#####################" + JSON.stringify(animals[0]));
              res.json({animals: animals});
            });
       });
