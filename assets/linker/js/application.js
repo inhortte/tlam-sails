@@ -317,7 +317,7 @@ function program1(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "bloat", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n          <span class=\"glyphicon glyphicon-chevron-up\"></span>\n        </a>\n      </td>\n      <td><span class=\"glyphicon glyphicon-file\"></span></td>\n      <td colspan=\"11\">\n        <div class=\"container\">\n          <div class=\"row\">\n            <div class=\"col-md-1\">\n              <span class=\"glyphicon glyphicon-tree-conifer\"></span>\n            </div>\n            <div class=\"col-md-1\">\n              <span class=\"glyphicon glyphicon-file\"></span>\n            </div>\n            <div class=\"col-md-2\">\n              <strong>");
+  data.buffer.push(">\n          <span class=\"glyphicon glyphicon-chevron-up\"></span>\n        </a>\n      </td>\n      <td colspan=\"11\">\n\n          <div class=\"row\">\n            <div class=\"col-md-1\">\n              <span class=\"glyphicon glyphicon-tree-conifer\"></span>\n            </div>\n            <div class=\"col-md-1\">\n              <span class=\"glyphicon glyphicon-file\"></span>\n            </div>\n            <div class=\"col-md-2\">\n              <strong>");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0],types:["STRING","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
@@ -339,7 +339,7 @@ function program1(depth0,data) {
   options = {hash:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0,depth0],types:["STRING","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "animals.edit", "mongoid", options) : helperMissing.call(depth0, "link-to", "animals.edit", "mongoid", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n            </div>\n            <div class=\"col-md-1\">\n              <a href=\"#\"><span class=\"glyphicon glyphicon-trash\"></span>\n            </div>\n          </div>\n          <hr />\n          <div class=\"row\">\n            <div class=\"col-md-2\">\n              <div>\n                <strong>Animal ID:</strong>\n              </div>\n              <div>\n                <strong>Frequency:</strong>\n              </div>\n              <div>\n                <strong>Sex:</strong>\n              </div>\n              <div>\n                <strong>Birthdate:</strong>\n              </div>\n              <div>\n                <strong>Release Date:</strong>\n              </div>\n              <div>\n                <strong>Microchip:</strong>\n              </div>\n            </div>\n            <div class=\"col-md-4\">\n              <div>\n                ");
+  data.buffer.push("\n            </div>\n            <div class=\"col-md-1\">\n              <a href=\"#\"><span class=\"glyphicon glyphicon-trash\"></a></span>\n            </div>\n          </div>\n          <hr />\n          <div class=\"row\">\n            <div class=\"col-md-2\">\n              <div>\n                <strong>Animal ID:</strong>\n              </div>\n              <div>\n                <strong>Frequency:</strong>\n              </div>\n              <div>\n                <strong>Sex:</strong>\n              </div>\n              <div>\n                <strong>Birthdate:</strong>\n              </div>\n              <div>\n                <strong>Release Date:</strong>\n              </div>\n              <div>\n                <strong>Microchip:</strong>\n              </div>\n            </div>\n            <div class=\"col-md-4\">\n              <div>\n                ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "animal_id", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
@@ -403,7 +403,7 @@ function program1(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "cause_of_death", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</div>\n            </div>\n        </div>\n      </td>\n    ");
+  data.buffer.push("</div>\n            </div>\n          </div>\n\n      </td>\n    ");
   return buffer;
   }
 function program2(depth0,data) {

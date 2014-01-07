@@ -35,10 +35,10 @@ body {
     color: #ffddaa;
 }
 #topmarten .navbar-collapse {
-    background-color: rgba(160, 160, 160, 0.35);
+    background-color: rgba(50, 50, 50, 1);
 }
 #topmarten .navbar-header {
-    background-color: rgba(160, 160, 160, 0.5);
+    background-color: rgba(80, 80, 120, 1);
     padding-left: 15px;
 }
 
