@@ -5,6 +5,7 @@ var AnimalsIndexRoute = Ember.Route.extend({
   },
   renderTemplate: function() {
     this._super();
+    console.log('AnimalsIndexRoute.renderTemplate');
     var animalsIndexController = this.controllerFor('animals_index');
     console.log(animalsIndexController);
 //    this.render('animals/index', {controller: animalsIndexController, into: 'animals'});
