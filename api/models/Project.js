@@ -1,32 +1,32 @@
 /**
- * Section
+ * Project
  *
  * @module      :: Model
  * @description :: A short summary of how this model works and what it represents.
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 
-/* global Section */
+/* global Project */
 
 var ModelUtils = require('../../lib/ModelUtils');
 
 module.exports = {
-  autoCreatedAt: false,
-  autoUpdatedAt: false,
   attributes: {
-    abbr: {
-      type: 'STRING',
-      max: 2,
-      required: true
-    },
     name: {
-      type: 'STRING',
+      type: 'string',
       required: true
     },
-    baseUrl: 'STRING'
+    abbr: {
+      type: 'string',
+      max: 2
+    },
+    organization_id: {
+      type: 'integer',
+      required: true
+    }
   },
   beforeCreate: function(vals, next) {
-    ModelUtils.nextId(Section, function(id) {
+    ModelUtils.nextId(Project, function(id) {
       vals.id = id;
       next();
     });

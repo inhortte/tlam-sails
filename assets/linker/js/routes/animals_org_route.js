@@ -1,3 +1,7 @@
 var AnimalsOrgRoute = Ember.Route.extend({
-  model: this.store.find('animal')
+  model: function(params, queryParams) {
+    return this.store.find('animal');
+  }
 });
+
+module.exports = AnimalsOrgRoute;

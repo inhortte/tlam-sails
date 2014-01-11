@@ -1,3 +1,8 @@
 var AnimalsRoute = Ember.Route.extend({
-  model: this.store.find('animal')
+  renderTemplate: function() {
+    console.log('AnimalsRoute.renderTemplate');
+    this.render('animals', {into: 'application'});
+  }
 });
+
+module.exports = AnimalsRoute;

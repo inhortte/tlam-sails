@@ -1,5 +1,5 @@
 /**
- * RtAnimalController
+ * OrganizationController
  *
  * @module      :: Controller
  * @description	:: A set of functions called `actions`.
@@ -15,46 +15,33 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-/* global Animal */
-/* global Species */
+/* global Organization */
 
 var ModelUtils = require('../../lib/ModelUtils');
 var async = require('async');
 
 module.exports = {
-
-  find: function(req, res) {
+    find: function(req, res) {
     if(req.param('id')) {
-      Animal.findOne(parseInt(req.param('id'), 10)).done(function(err, animal) {
+      Organization.findOne(parseInt(req.param('id'), 10)).done(function(err, organization) {
         if(err) { res.json(null); }
-        ModelUtils.getSpecies(animal, function(animal) {
-          ModelUtils.getProject(animal, function(animal) {
-            res.json({animal: animal});
-          });
+        ModelUtils.getProjects(organization, function(organization) {
+          res.json({organization: organization});
         });
       });
     } else {
-      // organise by birth date.
-      Animal.find({sort: 'birthdate asc'}).done(function(err, animals) {
-        if(err || !animals) { res.json({animals: []}); }
-        async.map(animals, function(animal, cb) {
-          ModelUtils.getSpecies(animal, function(animal) {
-            ModelUtils.getProject(animal, function(animal) {
-              cb(null, animal);
-            });
+      Organization.find().sort('organization_id').sort({ createdAt: 'asc'}).done(function(err, organizations) {
+        if(err) { res.json({organizations: []}); }
+        async.map(organizations, function(organization, cb) {
+          ModelUtils.getProjects(organization, function(organization) {
+            cb(null, organization);
           });
-        }, function(err, animals) {
-             console.log("#####################" + JSON.stringify(animals[0]));
-             res.json({animals: animals});
+        }, function(err, organizations) {
+             res.json({organizations: organizations});
            });
       });
     }
   },
-
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to RtAnimalController)
-   */
   _config: {
     blueprints: {
       actions: false,

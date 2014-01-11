@@ -163,6 +163,18 @@ module.exports = function (grunt) {
             cwd: './assets/linker/styles',
             src: ['*.css'],
             dest: '.tmp/public/styles'
+          },
+          {
+            expand: true,
+            cwd: './assets/linker/images',
+            src: ['*'],
+            dest: '.tmp/public/images'
+          },
+          {
+            expand: true,
+            cwd: './assets/linker/fonts',
+            src: ['*'],
+            dest: '.tmp/public/fonts'
           }
         ]
       },
