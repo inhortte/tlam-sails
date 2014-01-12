@@ -16,8 +16,10 @@
  */
 
 var passport = require('passport');
+var jwt = require('jwt-simple');
 
 module.exports = {
+  /* No view.... ember does that hovno ...
   login: function(req, res) {
     if(req.isAuthenticated()) {
       res.view('home/index');
@@ -25,17 +27,21 @@ module.exports = {
       res.view('auth/login', { message: req.message });
     }
   },
+   */
   process: function(req, res) {
+    console.log('############### AuthController.process!');
     passport.authenticate('local', { session: false }, function(err, user /*, info */) {
       if(err || (!user)) {
-        res.redirect('/login');
-        return;
+        res.status(400).json({login: false});
+        return {login: false};
       }
       req.logIn(user, function(err) {
         if(err) {
-          res.redirect('/login');
+          res.status(400).json({login: false});
+          return {login: false};
         }
-        return res.redirect('/');
+        res.status(200).json({login: jwt.encode(user[0], 'thurk')});
+        return {login: user};
       });
     })(req, res);
   },

@@ -220,82 +220,6 @@ module.exports = function (grunt) {
       }
     },
 
-    'sails-linker': {
-
-      devJs: {
-        options: {
-          startTag: '<!--SCRIPTS-->',
-          endTag: '<!--SCRIPTS END-->',
-          fileTmpl: '<script src="%s"></script>',
-          appRoot: '.tmp/public'
-        },
-        files: {
-          '.tmp/public/**/*.html': jsFilesToInject,
-          'views/**/*.html': jsFilesToInject,
-          'views/**/*.ejs': jsFilesToInject
-        }
-      },
-
-      prodJs: {
-        options: {
-          startTag: '<!--SCRIPTS-->',
-          endTag: '<!--SCRIPTS END-->',
-          fileTmpl: '<script src="%s"></script>',
-          appRoot: '.tmp/public'
-        },
-        files: {
-          '.tmp/public/**/*.html': ['.tmp/public/min/production.js'],
-          'views/**/*.html': ['.tmp/public/min/production.js'],
-          'views/**/*.ejs': ['.tmp/public/min/production.js']
-        }
-      },
-
-      devStyles: {
-        options: {
-          startTag: '<!--STYLES-->',
-          endTag: '<!--STYLES END-->',
-          fileTmpl: '<link rel="stylesheet" href="%s">',
-          appRoot: '.tmp/public'
-        },
-
-        // cssFilesToInject defined up top
-        files: {
-          '.tmp/public/**/*.html': cssFilesToInject,
-          'views/**/*.html': cssFilesToInject,
-          'views/**/*.ejs': cssFilesToInject
-        }
-      },
-
-      prodStyles: {
-        options: {
-          startTag: '<!--STYLES-->',
-          endTag: '<!--STYLES END-->',
-          fileTmpl: '<link rel="stylesheet" href="%s">',
-          appRoot: '.tmp/public'
-        },
-        files: {
-          '.tmp/public/index.html': ['.tmp/public/min/production.css'],
-          'views/**/*.html': ['.tmp/public/min/production.css'],
-          'views/**/*.ejs': ['.tmp/public/min/production.css']
-        }
-      },
-
-      // Bring in JST template object
-      devTpl: {
-        options: {
-          startTag: '<!--TEMPLATES-->',
-          endTag: '<!--TEMPLATES END-->',
-          fileTmpl: '<script type="text/javascript" src="%s"></script>',
-          appRoot: '.tmp/public'
-        },
-        files: {
-          '.tmp/public/index.html': ['.tmp/public/jst.js'],
-          'views/**/*.html': ['.tmp/public/jst.js'],
-          'views/**/*.ejs': ['.tmp/public/jst.js']
-        }
-      }
-    },
-
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -314,6 +238,20 @@ module.exports = function (grunt) {
       },
       config: {
         src: ['config/**/*.js']
+      }
+    },
+
+    bower: {
+      install: {
+        options: {
+          targetDir: './assets/linker/js/vendor',
+          layout: 'byType',
+          install: true,
+          verbose: false,
+          cleanTargetDir: false,
+          cleanBowerDir: true,
+          bowerOptions: {}
+        }
       }
     },
 
@@ -347,6 +285,7 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-bower-task');
 
   // When Sails is lifted:
   grunt.registerTask('default', [
@@ -364,9 +303,9 @@ module.exports = function (grunt) {
   grunt.registerTask('linkAssets', [
 
     // Update link/script/template references in `assets` index.html
-    'sails-linker:devJs',
-    'sails-linker:devStyles',
-    'sails-linker:devTpl'
+//    'sails-linker:devJs',
+//    'sails-linker:devStyles',
+//    'sails-linker:devTpl'
   ]);
 
 
@@ -386,9 +325,9 @@ module.exports = function (grunt) {
     'concat',
     'uglify',
     'cssmin',
-    'sails-linker:prodJs',
-    'sails-linker:prodStyles',
-    'sails-linker:devTpl'
+//    'sails-linker:prodJs',
+//    'sails-linker:prodStyles',
+//    'sails-linker:devTpl'
   ]);
 
   // When API files are changed:

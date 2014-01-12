@@ -13,11 +13,13 @@
         "underscore": "*",
         "passport": "*",
         "passport-local": "*",
-        "bcrypt": "*"
+        "bcrypt": "*",
+        "jwt-simple": "*"
     },
     "devDependencies": {
         "grunt-contrib-jshint": "~0.6.4",
-        "grunt-contrib-nodeunit": "~0.2.0"
+        "grunt-contrib-nodeunit": "~0.2.0",
+        "grunt-bower-task": "~0.3.4"
     },
     "scripts": {
         "start": "node app.js",

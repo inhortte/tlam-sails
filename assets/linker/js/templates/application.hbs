@@ -1,6 +1,8 @@
 <div class="container">
-  {{outlet topmarten}}
-  <br class="clear" />
-  <br class="clear" />
+  {{#if loggedIn}}
+    {{outlet topmarten}}
+    <br class="clear" />
+    <br class="clear" />
+  {{/if}}
   {{outlet}}
 </div>

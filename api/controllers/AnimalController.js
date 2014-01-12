@@ -16,7 +16,6 @@
  */
 
 /* global Animal */
-/* global Species */
 
 var ModelUtils = require('../../lib/ModelUtils');
 var async = require('async');

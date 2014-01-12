@@ -30,6 +30,13 @@ body {
 //    margin-right: auto;
 }
 
+#login {
+    margin: 50px 0;
+}
+#login .input-group {
+    margin: 10px 0;
+}
+
 #topmarten.navbar-default {
     background-color: rgba (248, 0, 0, 0.4);
     color: #ffddaa;
@@ -55,6 +62,21 @@ body {
 
 .container hr {
     margin: 5px 0;
+}
+
+.flash {
+    border: 1px solid #ffddaa;
+    padding: 5px 10px;
+    font-size: smaller;
+    font-weight: bold;
+    display: inline;
+}
+.flash:after {
+}
+.neutral {
+}
+.idiotic {
+    color: red;
 }
 
 .clear {

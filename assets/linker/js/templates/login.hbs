@@ -1,0 +1,27 @@
+<div id="login">
+  {{#if isProcessing}}
+    <div class="flash neutral img-rounded">
+      Čekej, vole.
+    </div>
+  {{/if}}
+  {{#if loginFailed}}
+    <div class="flash idiotic img-rounded">
+      What are you, stupid?
+    </div>
+  {{/if}}
+  <form class="form-horizontal" {{action "login" on="submit"}}>
+    <div class="control-group">
+      <div class="input-group">
+        <span class="input-group-addon">Login</span>
+        {{input type="text" class="form-control" placeholder="username" value=login}}
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Password</span>
+        {{input type="password" class="form-control" value=password}}
+      </div>
+      <div class="input-group">
+        <button type="submit" class="btn" {{bind-attr disabled="isProcessing"}}>Oouh!</button>
+      </div>
+    </div>
+  </form>
+</div>

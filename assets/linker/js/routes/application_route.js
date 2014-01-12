@@ -2,6 +2,7 @@ var ApplicationRoute = Ember.Route.extend({
   setupController: function(controller) {
     controller.set('hoopla', "Think Like A Mink");
     controller.set('balderdash', "I like kicking voles.");
+    controller.set('loggedIn', false);
   },
   renderTemplate: function() {
     this._super();

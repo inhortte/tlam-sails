@@ -1,0 +1,16 @@
+{
+    "name" : "Mink Bower",
+    "version" : "0.0.1",
+    "dependencies": {
+        "ember-auth": "*",
+        "ember-auth-request-jquery": "*"
+    },
+    "exportsOverride": {
+        "ember-auth": {
+            ".": "**/ember-auth.js"
+        },
+        "ember-auth-request-jquery": {
+            ".": "**/ember-auth-request-jquery.js"
+        }
+    }
+}
