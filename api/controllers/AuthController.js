@@ -21,13 +21,14 @@ var passport = require('passport');
 module.exports = {
   // Going with what ember-simple-auth needs. The client/server API as specified for the "Resource Owner Password Credentials Grant" in RFC 6749 is actually quite simple.
   process: function(req, res) {
-    console.log('############### AuthController.process!');
+    // console.log('############### AuthController.process!' + "\n" + JSON.stringify(Object.keys(req)) + "\n" + JSON.stringify(req.sessionStore) + "\n" + JSON.stringify(req.body));
     passport.authenticate('local', { session: false }, function(err, user /*, info */) {
       res.set('Content-Type', 'application/json;charset=UTF-8');
       res.set('Cache-Control', 'no-store');
       res.set('Pragma', 'no-cache');
       if(err || (!user)) {
-        console.log('user does not exist or error.')
+        if(err) { console.log("error: \n" + err); }
+        console.log('no user.... or error...');
         res.status(400).json({
           error: 'invalid_grant'
         });
@@ -35,8 +36,7 @@ module.exports = {
           error: 'invalid_grant'
         };
       }
-      req.logIn(user, function(err) {
-        console.log('logIn returned');
+      req.logIn(user, function() {
         /*
         if(err) {
           console.log('but there was an error...' + JSON.stringify(err));

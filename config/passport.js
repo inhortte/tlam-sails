@@ -13,9 +13,10 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 passport.use(new LocalStrategy({
-    usernameField: 'login',
+    usernameField: 'username',
     passwordField: 'password'
   }, function(login, password, cb) {
+       console.log('here we go....passport....');
        User.findByLogin(login).done(function(err, user) {
          if(err) { cb(null, err); }
          console.log('passport is looking for the user ....' + "\n" + JSON.stringify(user));

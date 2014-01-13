@@ -77,7 +77,8 @@ var AnimalsNewController = Ember.ObjectController.extend({
 module.exports = AnimalsNewController;
 
 },{}],6:[function(require,module,exports){
-var LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin).extend({
+var LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin);
+//.extend({
   /*
   loginFailed: false,
   isProcessing: false,
@@ -103,7 +104,7 @@ var LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMi
     this.set('loginFailed', true);
   },
    */
-  actions: {
+//  actions: {
     /*
     login: function() {
       this.setProperties({
@@ -139,8 +140,8 @@ var LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMi
          });
        */
 //    }
-  }
-});
+//  }
+//});
 
 module.exports = LoginController;
 
@@ -409,27 +410,24 @@ function program3(depth0,data) {
     'on': ("submit")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(">\n    <div class=\"control-group\">\n      <div class=\"input-group\">\n        <span class=\"input-group-addon\">Login</span>\n        ");
-  hashContexts = {'id': depth0,'type': depth0,'class': depth0,'placeholder': depth0,'valueBinding': depth0};
-  hashTypes = {'id': "STRING",'type': "STRING",'class': "STRING",'placeholder': "STRING",'valueBinding': "STRING"};
-  options = {hash:{
+  hashContexts = {'id': depth0,'valueBinding': depth0,'placeholder': depth0,'class': depth0};
+  hashTypes = {'id': "STRING",'valueBinding': "STRING",'placeholder': "STRING",'class': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
     'id': ("identification"),
-    'type': ("text"),
-    'class': ("form-control"),
-    'placeholder': ("username"),
-    'valueBinding': ("identification")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+    'valueBinding': ("identification"),
+    'placeholder': ("Username"),
+    'class': ("form-control")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("\n      </div>\n      <div class=\"input-group\">\n        <span class=\"input-group-addon\">Password</span>\n        ");
-  hashContexts = {'id': depth0,'type': depth0,'class': depth0,'valueBinding': depth0,'placeholder': depth0};
-  hashTypes = {'id': "STRING",'type': "STRING",'class': "STRING",'valueBinding': "STRING",'placeholder': "STRING"};
-  options = {hash:{
+  hashContexts = {'id': depth0,'type': depth0,'valueBinding': depth0,'placeholder': depth0,'class': depth0};
+  hashTypes = {'id': "STRING",'type': "STRING",'valueBinding': "STRING",'placeholder': "STRING",'class': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
     'id': ("password"),
     'type': ("password"),
-    'class': ("form-control"),
     'valueBinding': ("password"),
-    'placeholder': ("My elbow itches")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+    'placeholder': ("My elbow itches"),
+    'class': ("form-control")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("\n      </div>\n      <div class=\"input-group\">\n        <button type=\"submit\" class=\"btn\" ");
   hashContexts = {'disabled': depth0};
   hashTypes = {'disabled': "STRING"};

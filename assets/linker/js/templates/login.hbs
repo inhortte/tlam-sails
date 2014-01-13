@@ -13,11 +13,11 @@
     <div class="control-group">
       <div class="input-group">
         <span class="input-group-addon">Login</span>
-        {{input id="identification" type="text" class="form-control" placeholder="Username" valueBinding='identification'}}
+        {{view Ember.TextField id='identification' valueBinding='identification' placeholder='Username' class='form-control'}}
       </div>
       <div class="input-group">
         <span class="input-group-addon">Password</span>
-        {{input id="password" type="password" class="form-control" valueBinding="password" placeholder="My elbow itches"}}
+        {{view Ember.TextField id='password' type='password' valueBinding='password' placeholder='My elbow itches' class='form-control'}}
       </div>
       <div class="input-group">
         <button type="submit" class="btn" {{bind-attr disabled="isProcessing"}}>Oouh!</button>

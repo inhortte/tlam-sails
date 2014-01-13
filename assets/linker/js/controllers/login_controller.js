@@ -1,4 +1,5 @@
-var LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin).extend({
+var LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin);
+//.extend({
   /*
   loginFailed: false,
   isProcessing: false,
@@ -24,7 +25,7 @@ var LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMi
     this.set('loginFailed', true);
   },
    */
-  actions: {
+//  actions: {
     /*
     login: function() {
       this.setProperties({
@@ -60,7 +61,7 @@ var LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMi
          });
        */
 //    }
-  }
-});
+//  }
+//});
 
 module.exports = LoginController;
