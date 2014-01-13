@@ -18,6 +18,7 @@ passport.use(new LocalStrategy({
   }, function(login, password, cb) {
        User.findByLogin(login).done(function(err, user) {
          if(err) { cb(null, err); }
+         console.log('passport is looking for the user ....' + "\n" + JSON.stringify(user));
          if(!user || user.length < 1) {
            return cb(null, false, { message: 'I apologize, but you do not exist.'});
          }
@@ -25,6 +26,7 @@ passport.use(new LocalStrategy({
            if(!res) {
              return cb(null, false, { message: 'You have been consigned to purgatory.'});
            }
+           console.log('passport has authorized the user');
            return cb(null, user);
          });
        });

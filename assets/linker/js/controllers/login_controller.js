@@ -1,4 +1,5 @@
-var LoginController = Ember.Controller.extend({
+var LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin).extend({
+  /*
   loginFailed: false,
   isProcessing: false,
   isSlowConnection: false,
@@ -22,13 +23,20 @@ var LoginController = Ember.Controller.extend({
     this.reset();
     this.set('loginFailed', true);
   },
+   */
   actions: {
+    /*
     login: function() {
       this.setProperties({
         loginFailed: false,
         isProcessing: true
       });
 
+      if(this.session.isAuthenticated) {
+        console.log('Greetings!');
+      }
+
+      /*
       this.auth.signIn({
         data: this.getProperties('login', 'password')
       }).then(function(response) {
@@ -36,7 +44,7 @@ var LoginController = Ember.Controller.extend({
       }, function(err) {
            console.log('failure...' + JSON.stringify(err));
          });
-
+       */
       // this.set('timeout', setTimeout(this.slowConnection, 5000));
       /*
       var that = this;
@@ -51,7 +59,7 @@ var LoginController = Ember.Controller.extend({
            that.failure();
          });
        */
-    }
+//    }
   }
 });
 

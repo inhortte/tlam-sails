@@ -1,5 +1,5 @@
 <div class="container">
-  {{#if loggedIn}}
+  {{#if session.isAuthenticated}}
     {{outlet topmarten}}
     <br class="clear" />
     <br class="clear" />

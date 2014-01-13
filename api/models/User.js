@@ -6,6 +6,9 @@
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 
+/* global User */
+
+var ModelUtils = require('../../lib/ModelUtils');
 var bcrypt = require('bcrypt');
 
 module.exports = {
@@ -34,10 +37,12 @@ module.exports = {
           cb(err);
         } else {
           user.password = hash;
-          cb(null, user);
+          ModelUtils.nextId(User, function(id) {
+            user.id = id;
+            cb(null, user);
+          });
         }
       });
     });
   }
-
 };

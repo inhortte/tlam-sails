@@ -9,15 +9,15 @@
       What are you, stupid?
     </div>
   {{/if}}
-  <form class="form-horizontal" {{action "login" on="submit"}}>
+  <form class="form-horizontal" {{action login on="submit"}}>
     <div class="control-group">
       <div class="input-group">
         <span class="input-group-addon">Login</span>
-        {{input type="text" class="form-control" placeholder="username" value=login}}
+        {{input id="identification" type="text" class="form-control" placeholder="Username" valueBinding='identification'}}
       </div>
       <div class="input-group">
         <span class="input-group-addon">Password</span>
-        {{input type="password" class="form-control" value=password}}
+        {{input id="password" type="password" class="form-control" valueBinding="password" placeholder="My elbow itches"}}
       </div>
       <div class="input-group">
         <button type="submit" class="btn" {{bind-attr disabled="isProcessing"}}>Oouh!</button>

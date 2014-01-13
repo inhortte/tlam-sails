@@ -1,4 +1,4 @@
-var ApplicationRoute = Ember.Route.extend({
+var ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteMixin).extend({
   setupController: function(controller) {
     controller.set('hoopla', "Think Like A Mink");
     controller.set('balderdash', "I like kicking voles.");

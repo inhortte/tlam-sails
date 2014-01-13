@@ -3,7 +3,8 @@
     "version" : "0.0.1",
     "dependencies": {
         "ember-auth": "*",
-        "ember-auth-request-jquery": "*"
+        "ember-auth-request-jquery": "*",
+        "ember-simple-auth": "*"
     },
     "exportsOverride": {
         "ember-auth": {
@@ -11,6 +12,9 @@
         },
         "ember-auth-request-jquery": {
             ".": "**/ember-auth-request-jquery.js"
+        },
+        "ember-simple-auth": {
+            ".": "**/ember-simple-auth.js"
         }
     }
 }

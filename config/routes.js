@@ -48,6 +48,7 @@ module.exports.routes = {
   },
   // ember handles the zkurveny view
   // 'get /login': 'AuthController.login',
+  'post /token': 'AuthController.process',
   'post /login': 'AuthController.process',
   'get /logout': 'AuthController.logout',
 

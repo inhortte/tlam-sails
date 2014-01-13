@@ -1,4 +1,4 @@
-var AnimalsIndexRoute = Ember.Route.extend({
+var AnimalsIndexRoute = Ember.Route.extend(Ember.SimpleAuth.AuthenticatedRouteMixin).extend({
   model: function(params, queryParams) {
     console.log('AnimalsIndexRoute.model');
     return this.store.find('animal');

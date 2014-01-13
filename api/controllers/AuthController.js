@@ -15,33 +15,48 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+var AuthUtils = require('../../lib/AuthUtils.js');
 var passport = require('passport');
-var jwt = require('jwt-simple');
 
 module.exports = {
-  /* No view.... ember does that hovno ...
-  login: function(req, res) {
-    if(req.isAuthenticated()) {
-      res.view('home/index');
-    } else {
-      res.view('auth/login', { message: req.message });
-    }
-  },
-   */
+  // Going with what ember-simple-auth needs. The client/server API as specified for the "Resource Owner Password Credentials Grant" in RFC 6749 is actually quite simple.
   process: function(req, res) {
     console.log('############### AuthController.process!');
     passport.authenticate('local', { session: false }, function(err, user /*, info */) {
+      res.set('Content-Type', 'application/json;charset=UTF-8');
+      res.set('Cache-Control', 'no-store');
+      res.set('Pragma', 'no-cache');
       if(err || (!user)) {
-        res.status(400).json({login: false});
-        return {login: false};
+        console.log('user does not exist or error.')
+        res.status(400).json({
+          error: 'invalid_grant'
+        });
+        return {
+          error: 'invalid_grant'
+        };
       }
       req.logIn(user, function(err) {
+        console.log('logIn returned');
+        /*
         if(err) {
-          res.status(400).json({login: false});
-          return {login: false};
+          console.log('but there was an error...' + JSON.stringify(err));
+          res.status(400).json({
+            error: 'invalid_grant'
+          });
+          return {
+            error: 'invalid_grant'
+          };
         }
-        res.status(200).json({login: jwt.encode(user[0], 'thurk')});
-        return {login: user};
+         */
+        delete user[0].password;
+        AuthUtils.newAccessToken(user[0], function(access_token) {
+          AuthUtils.newRefreshToken(access_token, function(refresh_token) {
+            AuthUtils.rfc6749Response(access_token, refresh_token, function(response) {
+              res.status(200).json(response);
+              return response;
+            });
+          });
+        });
       });
     })(req, res);
   },
