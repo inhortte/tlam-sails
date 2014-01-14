@@ -1,4 +1,4 @@
-var AnimalsOrgRoute = Ember.Route.extend({
+var AnimalsOrgRoute = Ember.Route.extend(Ember.SimpleAuth.AuthenticatedRouteMixin).extend({
   model: function(params, queryParams) {
     return this.store.find('animal');
   }

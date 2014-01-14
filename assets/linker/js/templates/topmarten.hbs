@@ -16,7 +16,7 @@
       {{/each}}
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">logout</a></li>
+      <li><a {{action 'logout'}}>logout</a> {{outlet user}}</li>
     </ul>
   </div>
   </div>

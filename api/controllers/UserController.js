@@ -15,7 +15,19 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+var jwt = require('jwt-simple');
+
 module.exports = {
+  find: function(req, res) {
+    console.log('########## REQ HEADERS');
+    console.log(JSON.stringify(req.headers));
+    if(req.headers.authorization) {
+      var user = JSON.parse(jwt.decode(req.headers.authorization.substr(7), 'thurk'));
+      console.log(JSON.parse(jwt.decode(req.headers.authorization.substr(7), 'thurk')));
+      res.json({ user: user });
+    }
+    res.json({user: null});
+  },
   _config: {
     blueprints: {
       actions: false,

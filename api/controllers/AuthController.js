@@ -49,6 +49,9 @@ module.exports = {
         }
          */
         delete user[0].password;
+        delete user[0].createdAt;
+        delete user[0].updatedAt;
+        console.log(user[0]);
         AuthUtils.newAccessToken(user[0], function(access_token) {
           AuthUtils.newRefreshToken(access_token, function(refresh_token) {
             AuthUtils.rfc6749Response(access_token, refresh_token, function(response) {

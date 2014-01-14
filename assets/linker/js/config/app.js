@@ -34,5 +34,6 @@ App.Auth = Ember.Auth.extend({ request: 'jquery',
 */
 App.Moment = moment;
 // App.Store = require('./store'); // delete if you don't want ember-data
+Ember.Inflector.inflector.uncountable('user');
 
 module.exports = App;
