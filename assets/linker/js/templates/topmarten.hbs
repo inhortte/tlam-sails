@@ -16,7 +16,13 @@
       {{/each}}
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a {{action 'logout'}}>logout</a> {{outlet user}}</li>
+      <li><a {{action 'logout'}}>logout</a>
+        {{#if fetchUser.isPending}}
+          Ug.
+        {{else}}
+          Blug.
+        {{/if}}
+      </li>
     </ul>
   </div>
   </div>

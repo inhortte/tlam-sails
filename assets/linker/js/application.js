@@ -145,7 +145,32 @@ module.exports = LoginController;
 
 },{}],7:[function(require,module,exports){
 var TopmartenController = Ember.Controller.extend({
-  menu: [{name: 'Radiotracking'}, {name: 'Field Cameras'}, {name: 'Captive Breeding'}]
+  currentUser: {},
+  menu: [{name: 'Radiotracking'}, {name: 'Field Cameras'}, {name: 'Captive Breeding'}],
+  fetchUser: function() {
+               var that = this;
+               console.log('TopmartenController.fetchUser');
+               var fuck = this.store.find('user').then(function(user) {
+                            console.log('TopmartenController, promise - then');
+                            that.set('currentUser', user);
+                            return user;
+                          }, function(err) {
+                               console.log('an error occured...');
+                             });
+               // console.log(fuck);
+               return { isPending: true };
+             }.property(),
+  currentUserLogin: function() {
+                      this.get('fetchUser');
+                      if(this.get('currentUser').login === undefined) {
+                        var pendings = [ 'Vacillating...', 'Ululating...',
+                                         'Oscillating...', 'Undulating...' ];
+                        return pendings[Math.floor(Math.random() * pendings.length)];
+                      } else {
+                        var user = this.get('currentUser');
+                        return user.login;
+                      }
+  }.property('currentUser', 'fetchUser')
 });
 
 module.exports = TopmartenController;
@@ -354,9 +379,9 @@ var ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteMixin
   renderTemplate: function() {
     this._super();
     var topmartenController = this.controllerFor('topmarten');
-    var userController = this.controllerFor('user');
+//    var userController = this.controllerFor('user');
     this.render('topmarten', {outlet: 'topmarten', controller: topmartenController, into: 'application'});
-    this.render('user', {outlet: 'user', controller: userController, into: 'topmarten'});
+//    this.render('user', {outlet: 'user', controller: userController, into: 'topmarten'});
   }
 });
 
@@ -486,7 +511,7 @@ function program3(depth0,data) {
 Ember.TEMPLATES['topmarten'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
@@ -499,6 +524,18 @@ function program1(depth0,data) {
   return buffer;
   }
 
+function program3(depth0,data) {
+  
+  
+  data.buffer.push("\n          Ug.\n        ");
+  }
+
+function program5(depth0,data) {
+  
+  
+  data.buffer.push("\n          Blug.\n        ");
+  }
+
   data.buffer.push("<div id=\"topmarten\" class=\"navbar navbar-fixed-top\" role=\"navigation\">\n  <div class=\"container\">\n  <div class=\"navbar-header\">\n    <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n      <span class=\"sr-only\">Toggle navigation</span>\n      <span class=\"icon-bar\"></span>\n      <span class=\"icon-bar\"></span>\n      <span class=\"icon-bar\"></span>\n    </button>\n    <a class=\"navbar-brand\" href=\"#\">ThinkLikeAMink</a>\n  </div>\n  <div class=\"navbar-collapse collapse\">\n    <ul class=\"nav navbar-nav\">\n      ");
   hashTypes = {};
   hashContexts = {};
@@ -508,12 +545,12 @@ function program1(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "logout", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">logout</a> ");
+  data.buffer.push(">logout</a>\n        ");
   hashTypes = {};
   hashContexts = {};
-  options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers.outlet || depth0.outlet),stack1 ? stack1.call(depth0, "user", options) : helperMissing.call(depth0, "outlet", "user", options))));
-  data.buffer.push("</li>\n    </ul>\n  </div>\n  </div>\n</div>\n");
+  stack1 = helpers['if'].call(depth0, "fetchUser.isPending", {hash:{},inverse:self.program(5, program5, data),fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n      </li>\n    </ul>\n  </div>\n  </div>\n</div>\n");
   return buffer;
   
 });

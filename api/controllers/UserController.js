@@ -15,18 +15,32 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-var jwt = require('jwt-simple');
+/* global AccessToken */
+
+
+// var jwt = require('jwt-simple');
 
 module.exports = {
   find: function(req, res) {
     console.log('########## REQ HEADERS');
-    console.log(JSON.stringify(req.headers));
+    console.log(JSON.stringify(req.headers.authorization));
     if(req.headers.authorization) {
-      var user = JSON.parse(jwt.decode(req.headers.authorization.substr(7), 'thurk'));
-      console.log(JSON.parse(jwt.decode(req.headers.authorization.substr(7), 'thurk')));
-      res.json({ user: user });
+      AccessToken.findOne({access_token: req.headers.authorization.substr(7)}, function(err, at) {
+        if(err) {
+          console.log('Error finding access token "' + req.hearders.authorization.substr(7));
+          res.json({ user: null });
+        } else {
+          at.user(function(user) {
+            var hovno = { user: user };
+            console.log("User found - \n" + JSON.stringify(hovno));
+            res.json({ user: user });
+          });
+        }
+      });
+    } else {
+      console.log('Header no tiene authentication, vole.');
+      res.json({user: null});
     }
-    res.json({user: null});
   },
   _config: {
     blueprints: {

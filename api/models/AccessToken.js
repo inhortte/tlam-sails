@@ -7,6 +7,7 @@
  */
 
 /* global AccessToken */
+/* global User */
 
 var ModelUtils = require('../../lib/ModelUtils');
 var jwt = require('jwt-simple');
@@ -34,6 +35,19 @@ module.exports = {
       type: 'string',
       defaultsTo: 'thurk',
       required: true
+    },
+    user: function(cb) {
+      if(this.user_id) {
+        User.findOne({id: this.user_id}, function(err, user) {
+          if(err) {
+            cb(null);
+          } else {
+            cb(user.toJSON());
+          }
+        });
+      } else {
+        cb(null);
+      }
     }
   },
   beforeCreate: function(vals, next) {

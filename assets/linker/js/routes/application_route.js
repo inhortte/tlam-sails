@@ -1,4 +1,4 @@
-var ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteMixin).extend({
+var ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteMixin, {
   beforeModel: function() {
     console.log('ApplicationRoute.beforeModel');
   },
@@ -10,9 +10,9 @@ var ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteMixin
   renderTemplate: function() {
     this._super();
     var topmartenController = this.controllerFor('topmarten');
-    var userController = this.controllerFor('user');
+//    var userController = this.controllerFor('user');
     this.render('topmarten', {outlet: 'topmarten', controller: topmartenController, into: 'application'});
-    this.render('user', {outlet: 'user', controller: userController, into: 'topmarten'});
+//    this.render('user', {outlet: 'user', controller: userController, into: 'topmarten'});
   }
 });
 
